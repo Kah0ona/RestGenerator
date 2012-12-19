@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Ecore2REST/src"
+    modelPluginID="Ecore2REST" modelName="REST" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>REST.ecore</foreignModel>
+  <genPackages prefix="REST" disposableProviderFactory="true" ecorePackage="REST.ecore#/">
+    <genClasses image="false" ecoreClass="REST.ecore#//RESTService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//RESTService/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//RESTService/resources"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference REST.ecore#//RESTService/belongsTo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference REST.ecore#//RESTService/languages"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//Resource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//Resource/methods"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//Resource/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//Resource/path"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference REST.ecore#//Resource/belongsTo"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="REST.ecore#//Method">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//Method/requests"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//Method/responses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//Method/hooks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//Method/name"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//HTTPRequest">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//HTTPRequest/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//HTTPRequest/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//HTTPResponse">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference REST.ecore#//HTTPResponse/mediaType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//HTTPResponse/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//Parameter/expression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="REST.ecore#//MediaType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//MediaType/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//JSONMediaType"/>
+    <genClasses ecoreClass="REST.ecore#//XMLMediaType"/>
+    <genClasses ecoreClass="REST.ecore#//HTMLMediaType"/>
+    <genClasses ecoreClass="REST.ecore#//TEXTMediaType"/>
+    <genClasses ecoreClass="REST.ecore#//CreateMethod"/>
+    <genClasses ecoreClass="REST.ecore#//ReadMethod"/>
+    <genClasses ecoreClass="REST.ecore#//UpdateMethod"/>
+    <genClasses ecoreClass="REST.ecore#//DeleteMethod"/>
+    <genClasses ecoreClass="REST.ecore#//Hook">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//Hook/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//Hook/value"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//API">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//API/services"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//API/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference REST.ecore#//API/belongsTo"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//Server">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//Server/baseURI"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//Server/database"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//Client"/>
+    <genClasses image="false" ecoreClass="REST.ecore#//DataBase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//DataBase/name"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//System">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//System/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference REST.ecore#//System/APIs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="REST.ecore#//Language">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute REST.ecore#//Language/name"/>
+    </genClasses>
+    <genClasses ecoreClass="REST.ecore#//Java"/>
+    <genClasses ecoreClass="REST.ecore#//PHP"/>
+    <genClasses ecoreClass="REST.ecore#//JavaScript"/>
+    <genClasses ecoreClass="REST.ecore#//MySql"/>
+    <genClasses ecoreClass="REST.ecore#//SqlServer"/>
+  </genPackages>
+</genmodel:GenModel>

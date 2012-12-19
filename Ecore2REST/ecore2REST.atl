@@ -1,0 +1,299 @@
+module ecore2REST;
+create OUT:REST from IN:ecore;
+
+
+rule EPackage2System {
+	from
+		package: ecore!EPackage
+	to
+		t: REST!System (	
+			 name <- package.name
+	)
+}
+
+ rule EClass2API {
+	from
+		 class: ecore!EClass
+	to
+		t: REST!API (	 
+			    name <- class.name+'API',
+			    belongsTo <- class.ePackage,
+			    services <-if (thisModule.isAnnotatedWithSystemLevel('Java.Server') or
+		   				    thisModule.isAnnotatedWithSystemLevel('PHP.Server') or 
+			  			thisModule.isAnnotatedWithSystemLevel('JavaScript.Server')) 
+			  				then thisModule.Server(class)	else OclUndefined endif,
+			   services <-if (thisModule.isAnnotatedWithSystemLevel('Java.Client') or 
+			   				thisModule.isAnnotatedWithSystemLevel('PHP.Client') or 
+							thisModule.isAnnotatedWithSystemLevel('JavaScript.Client') )
+			 				then thisModule.Client(class)	else OclUndefined endif
+	)
+}
+
+
+-- for creating server RESTService
+
+lazy rule Server{
+	from
+		class: ecore!EClass
+	to
+		t: REST!Server (	
+			 name <- class.name+'Server',
+		     resources <- thisModule.Resource(class),
+			 languages <- if thisModule.isAnnotatedWithSystemLevel('Java.Server')  
+			 				then thisModule.Java(class.ePackage)	else OclUndefined endif,	
+			 languages <- if thisModule.isAnnotatedWithSystemLevel('PHP.Server')  
+			 				then thisModule.PHP(class.ePackage)	else OclUndefined endif,		
+			 languages <- if thisModule.isAnnotatedWithSystemLevel('JavaScript.Server')  
+			 				then thisModule.PHP(class.ePackage)	else OclUndefined endif,
+			 database <- if thisModule.isAnnotatedWithSystemLevel('MySql')  
+			 				then thisModule.MySql(class.ePackage)	else OclUndefined endif,
+			 database <- if thisModule.isAnnotatedWithSystemLevel('SqlServer')  
+			 				then thisModule.SqlServer(class.ePackage)	else OclUndefined endif
+	)
+}
+
+-- for creating client RESTService
+lazy rule Client{
+	from
+		class: ecore!EClass
+	to
+		t: REST!Client (	
+		 name <- class.name+'Client', 
+		 languages <- if thisModule.isAnnotatedWithSystemLevel('Java.Client')  
+		 				then thisModule.Java(class.ePackage)	else OclUndefined endif,
+		 languages <- if thisModule.isAnnotatedWithSystemLevel('PHP.Client')  
+		 				then thisModule.PHP(class.ePackage)	else OclUndefined endif,
+		 languages <- if thisModule.isAnnotatedWithSystemLevel('JavaScript.Client')  
+		 				then thisModule.PHP(class.ePackage)	else OclUndefined endif
+	)
+}
+
+-- Languages
+
+--Java
+
+unique lazy rule Java{
+	from
+		package: ecore!EPackage
+	to
+		t: REST!Java (	
+			name <- 'Java'
+	)
+}
+
+--PHP
+
+unique lazy rule PHP{
+	from
+		package: ecore!EPackage
+	to
+		t: REST!PHP (	
+			name <- 'PHP'
+	)
+}
+
+--JavaScript
+
+unique lazy rule JavaScript{
+	from
+		package: ecore!EPackage
+	to
+		t: REST!JavaScript (	
+			name <- 'JavaScript'
+	)
+}
+
+--Databases
+
+--MySql
+
+unique lazy rule MySql{
+	from
+		package: ecore!EPackage
+	to
+		t: REST!MySql (	
+			name <- 'MySql'
+	)
+}
+
+--SqlServer
+
+unique lazy rule SqlServer{
+	from
+		package: ecore!EPackage
+	to
+		t: REST!SqlServer (	
+			name <- 'SqlServer'
+	)
+}
+
+
+--for  resource 
+lazy rule Resource{
+	from
+		class: ecore!EClass
+	to
+		t: REST!Resource (	
+			name <- class.name + '_Resource',
+			methods <- if thisModule.isAnnotatedWith(class, 'create') 
+						then thisModule.CreateMethod(class)	else OclUndefined endif,
+			methods <- if thisModule.isAnnotatedWith(class, 'update')  
+						then thisModule.UpdateMethod(class)	else OclUndefined endif,
+	     	methods <- if thisModule.isAnnotatedWith(class, 'read')  
+						then thisModule.ReadMethod(class)	else OclUndefined endif,
+	    	methods <- if thisModule.isAnnotatedWith(class, 'delete')  
+						then thisModule.DeleteMethod(class)	else OclUndefined endif 
+	)
+}
+ 
+--for creating HTTP create Method 
+lazy rule CreateMethod{
+	from
+		class: ecore!EClass
+	to
+		t: REST!CreateMethod (	
+			name <- class.name + '_Create',
+			responses <- thisModule.HTTPResponse(class),
+			requests <-  thisModule.HTTPRequest(class)	,
+			hooks <-  thisModule.Hook(class)	
+			-- create HTTP methods
+	)
+}
+
+--update method
+
+ lazy rule UpdateMethod{
+	from
+		class: ecore!EClass
+	to
+		t: REST!UpdateMethod (	
+		name <- class.name + '_Update'	,
+			responses <- thisModule.HTTPResponse(class),
+			requests <-  thisModule.HTTPRequest(class),
+			hooks <-  thisModule.Hook(class)	
+	)
+}
+
+ --Read method
+ 
+ lazy rule ReadMethod{
+	from
+		class: ecore!EClass
+	to
+		t: REST!ReadMethod (	
+			name <- class.name + '_Read',
+			responses <- thisModule.HTTPResponse(class),
+			requests <-  thisModule.HTTPRequest(class),
+			hooks <-  thisModule.Hook(class)		
+	)
+}
+ 
+ -- Delete Method
+ 
+ lazy rule DeleteMethod{
+	from
+		class: ecore!EClass
+	to
+		t: REST!DeleteMethod (	
+			name <- class.name + '_Delete',
+			responses <- thisModule.HTTPResponse(class),
+			requests <-  thisModule.HTTPRequest(class),
+			hooks <-  thisModule.Hook(class)		
+			
+	)
+}
+ lazy rule Hook{
+	from
+		class: ecore!EClass
+	to
+		t: REST!Hook (	
+		name <- class.name + '_Hook'	
+	)
+}
+ --JSONMediaType
+ 
+ unique lazy rule JSONMediaType{
+	from
+		class: ecore!EClass
+	to
+		t: REST!JSONMediaType (	
+			expression <- 'JSON'
+	)
+}
+
+unique lazy rule XMLMediaType{
+	from
+		class: ecore!EClass
+	to
+		t: REST!XMLMediaType (	
+			expression <- 'XML'
+	)
+}
+unique lazy rule HTMLMediaType{
+	from
+		class: ecore!EClass
+	to
+		t: REST!HTMLMediaType (	
+			expression <- 'HTML'
+	)
+}
+
+unique lazy rule TEXTMediaType{
+	from
+		class: ecore!EClass
+	to
+		t: REST!TEXTMediaType (	
+			expression <- 'TEXT'
+	)
+}
+
+-- MediaTypes of HTTPResponse
+
+lazy rule HTTPResponse{
+	from
+		class: ecore!EClass
+	to
+		t: REST!HTTPResponse (	
+			mediaType <- if thisModule.isAnnotatedWith(class, 'JSON') 
+						then thisModule.JSONMediaType(class)	else OclUndefined endif,
+			mediaType <- if thisModule.isAnnotatedWith(class, 'HTML')  
+						then thisModule.HTMLMediaType(class)	else OclUndefined endif,
+	     	mediaType <- if thisModule.isAnnotatedWith(class, 'TEXT')  
+						then thisModule.TEXTMediaType(class)	else OclUndefined endif,
+	    	mediaType <- if thisModule.isAnnotatedWith(class, 'XML')  
+						then thisModule.XMLMediaType(class)	else OclUndefined endif 
+	)
+}
+
+lazy rule HTTPRequest{
+	from
+		class: ecore!EClass
+	to
+		t: REST!HTTPRequest (	
+			expression <- class.name + '_HTTPRequest',
+			parameters <- thisModule.Parameter(class)
+	)
+}
+
+lazy rule Parameter{
+	from
+		class: ecore!EClass
+	to
+		t: REST!Parameter (	
+			expression <- class.name + '_Parameter'
+	)
+}
+
+
+helper def : isAnnotatedWithSystemLevel(annotationName : String ) : Boolean = 
+	 ecore!EPackage->allInstances()->first().eAnnotations 
+	 			    ->select(e | e.oclIsTypeOf(ecore!EAnnotation))
+					->select(e|e.source.toString()=annotationName)->asSet()->size() > 0;
+
+helper def : isAnnotatedWith(class : ecore!EClass, annotationName : String ) : Boolean =
+	 class.eAnnotations ->select(e | e.oclIsTypeOf(ecore!EAnnotation))
+	 					->select(e|e.source.toString()=annotationName)->asSet()->size() > 0;
+ 
+
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="BussinesPlan">
+  <eAnnotations source="Java.Client"/>
+  <eAnnotations source="MySql"/>
+  <eAnnotations source="Java.Server"/>
+  <eAnnotations source="PHP.Client"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="create"/>
+    <eAnnotations source="update"/>
+    <eAnnotations source="delete"/>
+    <eAnnotations source="read"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" lowerBound="1" upperBound="-1"
+        eType="#//Task" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="Enschede"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="tesfa"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eAnnotations source="update"/>
+    <eAnnotations source="XML"/>
+    <eAnnotations source="create"/>
+    <eAnnotations source="read"/>
+    <eAnnotations source="delete"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="task" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="tesfa's tasks"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:REST="http://rest/1.0">
+  <REST:System name="BussinesPlan">
+    <APIs name="PersonAPI">
+      <services xsi:type="REST:Server" name="PersonServer" languages="/1">
+        <resources name="Person_Resource">
+          <methods xsi:type="REST:CreateMethod" name="Person_Create">
+            <requests expression="Person_HTTPRequest">
+              <parameters expression="Person_Parameter"/>
+            </requests>
+            <responses/>
+            <hooks name="Person_Hook"/>
+          </methods>
+          <methods xsi:type="REST:UpdateMethod" name="Person_Update">
+            <requests expression="Person_HTTPRequest">
+              <parameters expression="Person_Parameter"/>
+            </requests>
+            <responses/>
+            <hooks name="Person_Hook"/>
+          </methods>
+          <methods xsi:type="REST:ReadMethod" name="Person_Read">
+            <requests expression="Person_HTTPRequest">
+              <parameters expression="Person_Parameter"/>
+            </requests>
+            <responses/>
+            <hooks name="Person_Hook"/>
+          </methods>
+          <methods xsi:type="REST:DeleteMethod" name="Person_Delete">
+            <requests expression="Person_HTTPRequest">
+              <parameters expression="Person_Parameter"/>
+            </requests>
+            <responses/>
+            <hooks name="Person_Hook"/>
+          </methods>
+        </resources>
+      </services>
+      <services xsi:type="REST:Client" name="PersonClient" languages="/2"/>
+    </APIs>
+    <APIs name="TaskAPI">
+      <services xsi:type="REST:Server" name="TaskServer" languages="/1">
+        <resources name="Task_Resource">
+          <methods xsi:type="REST:CreateMethod" name="Task_Create">
+            <requests expression="Task_HTTPRequest">
+              <parameters expression="Task_Parameter"/>
+            </requests>
+            <responses mediaType="/3"/>
+            <hooks name="Task_Hook"/>
+          </methods>
+          <methods xsi:type="REST:UpdateMethod" name="Task_Update">
+            <requests expression="Task_HTTPRequest">
+              <parameters expression="Task_Parameter"/>
+            </requests>
+            <responses mediaType="/3"/>
+            <hooks name="Task_Hook"/>
+          </methods>
+          <methods xsi:type="REST:ReadMethod" name="Task_Read">
+            <requests expression="Task_HTTPRequest">
+              <parameters expression="Task_Parameter"/>
+            </requests>
+            <responses mediaType="/3"/>
+            <hooks name="Task_Hook"/>
+          </methods>
+          <methods xsi:type="REST:DeleteMethod" name="Task_Delete">
+            <requests expression="Task_HTTPRequest">
+              <parameters expression="Task_Parameter"/>
+            </requests>
+            <responses mediaType="/3"/>
+            <hooks name="Task_Hook"/>
+          </methods>
+        </resources>
+        <database xsi:type="REST:MySql" name="MySql"/>
+      </services>
+      <services xsi:type="REST:Client" name="TaskClient" languages="/2"/>
+    </APIs>
+  </REST:System>
+  <REST:Java name="Java"/>
+  <REST:PHP name="PHP"/>
+  <REST:XMLMediaType expression="XML"/>
+</xmi:XMI>

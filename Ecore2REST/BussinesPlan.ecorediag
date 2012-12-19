@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_vqiisOedEeGxB581W6NDZw" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_vrou4OedEeGxB581W6NDZw" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_vrpV8OedEeGxB581W6NDZw" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_vrpV8eedEeGxB581W6NDZw" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_vrryMOedEeGxB581W6NDZw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="BussinesPlan.ecore#//Person/address"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vrsZQOedEeGxB581W6NDZw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_vrrLIOedEeGxB581W6NDZw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="BussinesPlan.ecore#//Person/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vrrLIeedEeGxB581W6NDZw"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_vrpV8uedEeGxB581W6NDZw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_vrpV8-edEeGxB581W6NDZw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_vrpV9OedEeGxB581W6NDZw"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_vrp9AOedEeGxB581W6NDZw" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_vrp9AeedEeGxB581W6NDZw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_vrp9AuedEeGxB581W6NDZw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_vrp9A-edEeGxB581W6NDZw"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_vrou4eedEeGxB581W6NDZw" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="BussinesPlan.ecore#//Person"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vrou4uedEeGxB581W6NDZw" x="135" y="234"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_vrsZQeedEeGxB581W6NDZw" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_vrwqsOedEeGxB581W6NDZw" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_vrxRwOedEeGxB581W6NDZw" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_vrxRweedEeGxB581W6NDZw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_vrxRwuedEeGxB581W6NDZw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_vrxRw-edEeGxB581W6NDZw"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_vrx40OedEeGxB581W6NDZw" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_vryf4OedEeGxB581W6NDZw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_vryf4eedEeGxB581W6NDZw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_vryf4uedEeGxB581W6NDZw"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_vrsZQuedEeGxB581W6NDZw" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="BussinesPlan.ecore#//Task"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vrsZQ-edEeGxB581W6NDZw" x="315" y="225"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_vqiiseedEeGxB581W6NDZw"/>
+  <element xmi:type="ecore:EPackage" href="BussinesPlan.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_vr3YYOedEeGxB581W6NDZw" type="3002" source="_vrou4OedEeGxB581W6NDZw" target="_vrsZQeedEeGxB581W6NDZw">
+    <children xmi:type="notation:Node" xmi:id="_vr3_cOedEeGxB581W6NDZw" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_vr3_ceedEeGxB581W6NDZw" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_vr4mgOedEeGxB581W6NDZw" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_vr4mgeedEeGxB581W6NDZw" x="-3" y="14"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_vr3YYeedEeGxB581W6NDZw" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vr3YYuedEeGxB581W6NDZw" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="BussinesPlan.ecore#//Person/tasks"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vr3YY-edEeGxB581W6NDZw" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vuCioOedEeGxB581W6NDZw" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vuDJsOedEeGxB581W6NDZw" id="(0.4956521739130435,1.0)"/>
+  </edges>
+</notation:Diagram>
