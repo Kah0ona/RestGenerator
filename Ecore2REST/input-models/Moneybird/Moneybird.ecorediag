@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_MSSDIEneEeKIT9-1_Y7JOQ" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_MS_00EneEeKIT9-1_Y7JOQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_MTCREEneEeKIT9-1_Y7JOQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_MTCREUneEeKIT9-1_Y7JOQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_MTC4JEneEeKIT9-1_Y7JOQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Moneybird.ecore#//Contact/firstname"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MTC4JUneEeKIT9-1_Y7JOQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_MTCREkneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MTCRE0neEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MTCRFEneEeKIT9-1_Y7JOQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_MTC4IEneEeKIT9-1_Y7JOQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_MTC4IUneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MTC4IkneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MTC4I0neEeKIT9-1_Y7JOQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_MS_00UneEeKIT9-1_Y7JOQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="Moneybird.ecore#//Contact"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_00kneEeKIT9-1_Y7JOQ" x="341" y="393"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_MTDfMEneEeKIT9-1_Y7JOQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_MTDfM0neEeKIT9-1_Y7JOQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_MTDfNEneEeKIT9-1_Y7JOQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_MTEGQEneEeKIT9-1_Y7JOQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Moneybird.ecore#//Invoice/invoice-id"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MTEGQUneEeKIT9-1_Y7JOQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_MTDfNUneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MTDfNkneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MTDfN0neEeKIT9-1_Y7JOQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_MTDfOEneEeKIT9-1_Y7JOQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_MTDfOUneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MTDfOkneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MTDfO0neEeKIT9-1_Y7JOQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_MTDfMUneEeKIT9-1_Y7JOQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="Moneybird.ecore#//Invoice"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MTDfMkneEeKIT9-1_Y7JOQ" x="322" y="282"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_MTEGQkneEeKIT9-1_Y7JOQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_MTEtUEneEeKIT9-1_Y7JOQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_MTEtUUneEeKIT9-1_Y7JOQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_MTEtWUneEeKIT9-1_Y7JOQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Moneybird.ecore#//InvoiceDetail/amount"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MTEtWkneEeKIT9-1_Y7JOQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_MTFUYEneEeKIT9-1_Y7JOQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Moneybird.ecore#//InvoiceDetail/price"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MTFUYUneEeKIT9-1_Y7JOQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_MTFUYkneEeKIT9-1_Y7JOQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Moneybird.ecore#//InvoiceDetail/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MTFUY0neEeKIT9-1_Y7JOQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_MTFUZEneEeKIT9-1_Y7JOQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Moneybird.ecore#//InvoiceDetail/taxt-rate-id"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MTF7cEneEeKIT9-1_Y7JOQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_MTEtUkneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MTEtU0neEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MTEtVEneEeKIT9-1_Y7JOQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_MTEtVUneEeKIT9-1_Y7JOQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_MTEtVkneEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MTEtV0neEeKIT9-1_Y7JOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MTEtWEneEeKIT9-1_Y7JOQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_MTEGQ0neEeKIT9-1_Y7JOQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="Moneybird.ecore#//InvoiceDetail"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MTEGREneEeKIT9-1_Y7JOQ" x="336" y="120"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_MSSDIUneEeKIT9-1_Y7JOQ"/>
+  <element xmi:type="ecore:EPackage" href="Moneybird.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_MTGigEneEeKIT9-1_Y7JOQ" type="3002" source="_MS_00EneEeKIT9-1_Y7JOQ" target="_MTDfMEneEeKIT9-1_Y7JOQ">
+    <children xmi:type="notation:Node" xmi:id="_MTHJkEneEeKIT9-1_Y7JOQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MTHJkUneEeKIT9-1_Y7JOQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_MTHJkkneEeKIT9-1_Y7JOQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MTHJk0neEeKIT9-1_Y7JOQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_MTGigUneEeKIT9-1_Y7JOQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_MTGigkneEeKIT9-1_Y7JOQ" fontColor="4210752" fontName="Sans" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="Moneybird.ecore#//Contact/invoices"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MTGig0neEeKIT9-1_Y7JOQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MTuNkEneEeKIT9-1_Y7JOQ" id="(0.4966887417218543,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MTu0oEneEeKIT9-1_Y7JOQ" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_MTHwoEneEeKIT9-1_Y7JOQ" type="3002" source="_MTDfMEneEeKIT9-1_Y7JOQ" target="_MTEGQkneEeKIT9-1_Y7JOQ">
+    <children xmi:type="notation:Node" xmi:id="_MTHwpEneEeKIT9-1_Y7JOQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MTHwpUneEeKIT9-1_Y7JOQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_MTHwpkneEeKIT9-1_Y7JOQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MTHwp0neEeKIT9-1_Y7JOQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_MTHwoUneEeKIT9-1_Y7JOQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_MTHwokneEeKIT9-1_Y7JOQ" fontColor="4210752" fontName="Sans" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="Moneybird.ecore#//Invoice/invoiceDetails"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MTHwo0neEeKIT9-1_Y7JOQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MTvbsEneEeKIT9-1_Y7JOQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MTvbsUneEeKIT9-1_Y7JOQ" id="(0.4968944099378882,1.0)"/>
+  </edges>
+</notation:Diagram>
