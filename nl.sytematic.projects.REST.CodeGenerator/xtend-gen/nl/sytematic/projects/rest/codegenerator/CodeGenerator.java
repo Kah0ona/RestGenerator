@@ -2,10 +2,8 @@ package nl.sytematic.projects.rest.codegenerator;
 
 import java.util.Map;
 import nl.sytematic.projects.REST.REST.RESTPackage;
-import nl.sytematic.projects.rest.codegenerator.java.SystemCodeTemplate;
-import org.eclipse.emf.common.util.EList;
+import nl.sytematic.projects.rest.codegenerator.java.JavaCodeGenerator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -23,10 +21,6 @@ public class CodeGenerator {
    */
   private Resource restResource;
   
-  private String filePath2 = "C:/Users/Tesfay/Desktop/Internship/WorkSpace/nl.sytematic.projects.REST.RESTServiceExample/src/nl/sytematic/projects/REST/RESTServiceExample/";
-  
-  private String filePath = "src-gen/nl/sytematic/projects/REST/CodeGenerator/";
-  
   public static void main(final String[] args) {
     CodeGenerator _codeGenerator = new CodeGenerator();
     _codeGenerator.generate("sample-RESTmodel.xmi", "BussinesPlan.ecore");
@@ -41,9 +35,6 @@ public class CodeGenerator {
     this.loadRestResource(restModelPath);
     this.loadDomainResource(domainModelPath);
     this.invokeCodeGenerators();
-    EList<EObject> _contents = this.restResource.getContents();
-    for (final EObject content : _contents) {
-    }
   }
   
   /**
@@ -93,27 +84,13 @@ public class CodeGenerator {
   
   /**
    * Based on the annotations for languages, it generates java, php, etc.
+   * edit: no it isn't
    */
-  public Object invokeCodeGenerators() {
-    return null;
+  public void invokeCodeGenerators() {
+    this.invokeJavaGenerator();
   }
   
-  protected CharSequence _generateCode(final nl.sytematic.projects.REST.REST.System it) {
-    CharSequence _xblockexpression = null;
-    {
-      SystemCodeTemplate _systemCodeTemplate = new SystemCodeTemplate();
-      final SystemCodeTemplate tpl = _systemCodeTemplate;
-      tpl.setRestResource(this.restResource);
-      tpl.setDomainResource(this.domainResource);
-      CharSequence _generate = tpl.generate(it);
-      _xblockexpression = (_generate);
-    }
-    return _xblockexpression;
-  }
-  
-  public CharSequence generateCode(final nl.sytematic.projects.REST.REST.System it) {
-    {
-      return _generateCode(it);
-    }
+  public void invokeJavaGenerator() {
+    JavaCodeGenerator.generateCode(this.restResource, this.domainResource);
   }
 }
