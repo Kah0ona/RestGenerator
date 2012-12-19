@@ -1,49 +1,15 @@
 package nl.sytematic.projects.rest.codegenerator
 
-import java.io.File
-import nl.sytematic.projects.REST.REST.API
+import nl.sytematic.projects.rest.codegenerator.java.*;
+
 import nl.sytematic.projects.REST.REST.RESTPackage
 import nl.sytematic.projects.REST.REST.System
+import nl.sytematic.projects.rest.codegenerator.java.SystemCodeTemplate
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage$Registry
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.xtext.generator.IGenerator
-import nl.sytematic.projects.REST.REST.Client
-import nl.sytematic.projects.REST.REST.CreateMethod
-import nl.sytematic.projects.REST.REST.DataBase
-import nl.sytematic.projects.REST.REST.DeleteMethod
-import nl.sytematic.projects.REST.REST.Hook
-import nl.sytematic.projects.REST.REST.HTMLMediaType
-import nl.sytematic.projects.REST.REST.HTTPRequest
-import nl.sytematic.projects.REST.REST.HTTPResponse
-import nl.sytematic.projects.REST.REST.Java
-import nl.sytematic.projects.REST.REST.JavaScript
-import nl.sytematic.projects.REST.REST.JSONMediaType
-import nl.sytematic.projects.REST.REST.MySql
-import nl.sytematic.projects.REST.REST.Parameter
-import nl.sytematic.projects.REST.REST.PHP
-import nl.sytematic.projects.REST.REST.ReadMethod
-import nl.sytematic.projects.REST.REST.Server
-import nl.sytematic.projects.REST.REST.SqlServer
-import nl.sytematic.projects.REST.REST.TEXTMediaType
-import nl.sytematic.projects.REST.REST.UpdateMethod
-import nl.sytematic.projects.REST.REST.XMLMediaType
-import java.io.FileWriter
-import org.eclipse.emf.ecore.ENamedElement
-import org.eclipse.emf.ecore.EModelElement
-import org.eclipse.emf.ecore.EFactory
-import org.eclipse.emf.ecore.EAnnotation
-import org.eclipse.emf.ecore.EClassifier
-import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.ecore.EAttribute
-import nl.sytematic.projects.rest.codegenerator.java.*
-
-import org.eclipse.xtext.generator.IFileSystemAccess
 
 class CodeGenerator{
 	/**
@@ -56,9 +22,6 @@ class CodeGenerator{
 	 */
 	org.eclipse.emf.ecore.resource.Resource restResource
 
-	// specify path here,  where you want your generated files to be stored 
-	String filePath2="C:/Users/Tesfay/Desktop/Internship/WorkSpace/nl.sytematic.projects.REST.RESTServiceExample/src/nl/sytematic/projects/REST/RESTServiceExample/"
-	String filePath	= "src-gen/nl/sytematic/projects/REST/CodeGenerator/";
 	
 	def static void main(String[] args) {
 		new CodeGenerator().generate("sample-RESTmodel.xmi", "BussinesPlan.ecore")    
@@ -102,9 +65,10 @@ class CodeGenerator{
 		invokeJavaGenerator
 	}
 
-	def invokeJavaGenerator() {
-		
+	def void invokeJavaGenerator() {
+		JavaCodeGenerator::generateCode(restResource, domainResource);
 	}
+
 
 	def dispatch generateCode(System it) {
 		val SystemCodeTemplate tpl = new SystemCodeTemplate()
