@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.resource.Resource
 import java.util.ArrayList
-import java.util.Map$Entry
 
 class JavaPojoGenerator {
 	
@@ -17,36 +16,60 @@ class JavaPojoGenerator {
 	
 
 	def generateCode(Resource resource, Resource resource2) {
-		
+		val packageName="nl.sytematic.lib.projectX.data";
+		val generationDirectory=packageName.replace('.','/');
 		mapPojos(resource2);
 		for(entry: pojos.entrySet){
-			System::out.println("entry: "+ entry.key);
-			System::out.println("content to string:\r\n "+ generatePojoCode(entry.value));
-			
+			entry.value.packageName=packageName;
+			createSourceFile('''«generationDirectory»/«entry.key».java''', generatePojoCode(entry.value));
 		}
-		if(true) return;
-		
-		System::out.println("Start Java generation.");
-		for(EObject object: resource2.contents){
-			generateObject(object);
-			//System::out.println("Generated: \"" + t + "\"");
-			//sb.append("OI   " + object.toString() + "\r\n");
-		}
-		System::out.println("Done generating Java.");
 	}
-	
+
+	/** Given a Pojo object generate the Java source code to implement that Pojo
+	 * @param pojo The Pojo object to generate
+	 * @return String Java source code
+	 */	
 	def String generatePojoCode(Pojo pojo){
 		val sb = new StringBuilder();
-		pojo.attributes.forEach(a | sb.append('''«a.EType.instanceTypeName» «a.name»;''' +"\r\n"))
-		pojo.references.entrySet.forEach(ref |sb.append('''List<«ref.value.name»> «ref.key»;''' + "\r\n"))
-		pojo.incomingReferences.forEach(iRef | sb.append('''«iRef.name» «iRef.name.toLowerCase»;''' + "\r\n"))
+		pojo.attributes.forEach(a | sb.append(generateAttributeCode(a.EType.instanceTypeName, a.name)));		
+		pojo.references.entrySet.forEach(ref | sb.append(generateAttributeCode('''List<«ref.value.name»>''', ref.key)));		
+		pojo.incomingReferences.forEach(iRef | sb.append(generateAttributeCode(iRef.name, iRef.name.toLowerCase)));
 		
-		''' 
+		'''
+		package «pojo.packageName»;
+		
+		import java.util.List;
+		
 		class «pojo.name»{
 			«sb.toString»
 		}
 		'''
 	}
+
+	def String generateAttributeCode(String type, String variable){
+		'''
+		
+		private «type» «variable»;
+		
+		public «type» get«variable.toFirstUpper»(){
+		    return this.«variable»;	
+		}
+		
+		public void set«variable.toFirstUpper»(«type» «variable»){
+		    this.«variable» = «variable»;	
+		}
+		'''
+	}
+
+	/** */
+	def String convertToClassName(String name){
+		return name.toFirstUpper;
+	}
+
+
+	/** Fill the this.pojos map with a Pojo objects for each class in the model. 
+	 *  This function creates all Pojo objects and also tracks incoming references for each Pojo.
+	 */
 
 	def dispatch void mapPojos(Resource model){
 		model.contents.forEach(o | mapPojos(o));
@@ -55,11 +78,12 @@ class JavaPojoGenerator {
 		obj.eContents.forEach(c | mapPojos(c));
 	}
 
-	/** Create a mapping of the references between POJOs as well as back-references. 
-	 * 
+	/** Add the Eclass c to the this.pojos map.
+	 *  This function creates all Pojo objects and also tracks incoming references for each Pojo.
+	 *  
 	 */
 	def dispatch void mapPojos(EClass c){
-		val name=c.name;
+		val name=convertToClassName(c.name);
 		var Pojo pojo;
 		if(pojos.containsKey(name)){
 			pojo=pojos.get(name);
@@ -69,7 +93,7 @@ class JavaPojoGenerator {
 		}
 		pojo.attributes=c.eContents.filter(typeof(EAttribute)).toList;
 		for(ref: c.eContents.filter(typeof(EReference)).toList){
-			val refName=ref.EType.name;
+			val refName=convertToClassName(ref.EType.name);
 			var Pojo refPojo;
 			if(pojos.containsKey(refName)){
 				refPojo=pojos.get(refName);
@@ -95,42 +119,10 @@ file: «name»
 ----------------
 «content»
 ================''');
-	
-	}
-	
-	
-	def dispatch void generateObject(EClass c){
-		//System::out.println("Class: " + c.name);
-		val sb=new StringBuilder();
-		c.eContents.forEach(content | sb.append(generateObject(content)));
-		val file=c.name + ".java";
-		val content = '''
-		class «c.name»{
-			«sb.toString()»
-		} 
-		''';
-		createSourceFile(file, content.toString);
 	}
 
-	def dispatch String generateObject(EAttribute a){
-		'''
-		«a.EType.instanceTypeName» «a.name»;
-		'''		
-	}
-	def dispatch String generateObject(EReference r){
-		'''
-		List<«r.EType.name»> «r.name»;
-		'''		
-	}
-	
-
-	def dispatch String generateObject(EObject obj){
-		//System::out.println("Object: " + obj.toString());
-		val sb=new StringBuilder();
-		obj.eContents.forEach(c | sb.append(generateObject(c)));
-		return sb.toString();
-	}
 }
+
 
 class Pojo{
 	
@@ -139,6 +131,7 @@ class Pojo{
 	}
 	
 	public String name;
+	public String packageName;	
 	public List<EAttribute> attributes = new ArrayList<EAttribute>();
 	public Map<String, Pojo> references = new HashMap<String, Pojo>();
 	public List<Pojo> incomingReferences = new ArrayList<Pojo>();
