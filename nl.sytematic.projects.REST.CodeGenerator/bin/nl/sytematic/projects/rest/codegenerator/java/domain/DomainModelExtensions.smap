@@ -1,0 +1,11 @@
+SMAP
+DomainModelExtensions.java
+Xtend
+*S Xtend
+*F
++ 0 DomainModelExtensions.xtend
+src/nl/sytematic/projects/rest/codegenerator/java/domain/DomainModelExtensions.xtend
+*L
+13:14,2
+12:16
+*E

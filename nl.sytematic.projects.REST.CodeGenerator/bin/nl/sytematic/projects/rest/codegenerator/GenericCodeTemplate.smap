@@ -1,0 +1,13 @@
+SMAP
+GenericCodeTemplate.java
+Xtend
+*S Xtend
+*F
++ 0 AbstractCodeGenerator.xtend
+src/nl/sytematic/projects/rest/codegenerator/AbstractCodeGenerator.xtend
+*L
+10:12
+9:13
+14:17
+13:18
+*E

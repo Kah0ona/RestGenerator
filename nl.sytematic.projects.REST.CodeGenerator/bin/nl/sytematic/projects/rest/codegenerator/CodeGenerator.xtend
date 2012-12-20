@@ -1,7 +1,7 @@
 package nl.sytematic.projects.rest.codegenerator
 
 import nl.sytematic.projects.REST.REST.RESTPackage
-import nl.sytematic.projects.rest.codegenerator.java.JavaCodeGenerator
+import nl.sytematic.projects.rest.codegenerator.java.JavaPojoGenerator
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EPackage$Registry
 import org.eclipse.emf.ecore.resource.Resource
@@ -64,7 +64,8 @@ class CodeGenerator{
 	}
 
 	def void invokeJavaGenerator() {
-		JavaCodeGenerator::generateCode(restResource, domainResource);
+		val jcg = new JavaPojoGenerator();
+		jcg.generateCode(restResource, domainResource);
 	}
 
 
