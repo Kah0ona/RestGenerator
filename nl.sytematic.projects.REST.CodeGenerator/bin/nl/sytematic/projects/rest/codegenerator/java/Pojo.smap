@@ -6,8 +6,8 @@ Xtend
 + 0 JavaPojoGenerator.xtend
 src/nl/sytematic/projects/rest/codegenerator/java/JavaPojoGenerator.xtend
 *L
-130:13
-135:20,6
-136:27,6
-137:34,6
+118:13
+123:20,6
+124:27,6
+125:34,6
 *E

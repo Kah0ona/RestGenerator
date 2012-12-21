@@ -17,12 +17,10 @@ class JavaPojoGenerator {
 
 	def generateCode(Resource resource, Resource resource2) {
 		val packageName = JavaCodeGenerator::targetPackageName +".data";
-		val generationDirectory = JavaCodeGenerator::packageToDirectory(packageName);
 		mapPojos(resource2);
 		for(entry: pojos.entrySet){
 			entry.value.packageName=packageName;
 			JavaCodeGenerator::createJavaSourceFile(packageName, '''«entry.key».java''', generatePojoCode(entry.value));			
-			//JavaCodeGenerator::createSourceFile('''«generationDirectory»/«entry.key».java''', generatePojoCode(entry.value));
 		}
 	}
 

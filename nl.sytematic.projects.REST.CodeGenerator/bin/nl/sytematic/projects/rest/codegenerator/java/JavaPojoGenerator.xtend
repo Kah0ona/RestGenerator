@@ -16,12 +16,11 @@ class JavaPojoGenerator {
 	
 
 	def generateCode(Resource resource, Resource resource2) {
-		val packageName="nl.sytematic.lib.projectX.data";
-		val generationDirectory=packageName.replace('.','/');
+		val packageName = JavaCodeGenerator::targetPackageName +".data";
 		mapPojos(resource2);
 		for(entry: pojos.entrySet){
 			entry.value.packageName=packageName;
-			createSourceFile('''«generationDirectory»/«entry.key».java''', generatePojoCode(entry.value));
+			JavaCodeGenerator::createJavaSourceFile(packageName, '''«entry.key».java''', generatePojoCode(entry.value));			
 		}
 	}
 
@@ -83,7 +82,7 @@ class JavaPojoGenerator {
 	 *  
 	 */
 	def dispatch void mapPojos(EClass c){
-		val name=convertToClassName(c.name);
+		val name=c.name.convertToClassName;
 		var Pojo pojo;
 		if(pojos.containsKey(name)){
 			pojo=pojos.get(name);
@@ -93,7 +92,7 @@ class JavaPojoGenerator {
 		}
 		pojo.attributes=c.eContents.filter(typeof(EAttribute)).toList;
 		for(ref: c.eContents.filter(typeof(EReference)).toList){
-			val refName=convertToClassName(ref.EType.name);
+			val refName=ref.EType.name.convertToClassName;
 			var Pojo refPojo;
 			if(pojos.containsKey(refName)){
 				refPojo=pojos.get(refName);
@@ -107,21 +106,10 @@ class JavaPojoGenerator {
 	}
 	
 
-	
-
-	
-	def void createSourceFile(String name, String content){
-		System::out.println(
-'''
-
-================
-file: «name»
-----------------
-«content»
-================''');
-	}
-
 }
+
+	
+
 
 
 class Pojo{

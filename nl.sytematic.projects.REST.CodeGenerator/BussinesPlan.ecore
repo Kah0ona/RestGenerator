@@ -11,7 +11,7 @@
     <eAnnotations source="delete"/>
     <eAnnotations source="read"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" lowerBound="1" upperBound="-1"
-        eType="#//Task" containment="true"/>
+        eType="#//Task" containment="true" eOpposite="#//Task/parent"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="Enschede"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -27,6 +27,8 @@
         defaultValueLiteral="tesfa's tasks"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="plans" eType="#//Planner"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Person"
+        eOpposite="#//Person/tasks"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Planner">
     <eAnnotations source="update"/>
