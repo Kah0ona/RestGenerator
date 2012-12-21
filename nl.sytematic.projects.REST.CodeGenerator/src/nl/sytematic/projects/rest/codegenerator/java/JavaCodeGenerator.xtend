@@ -12,19 +12,24 @@ import java.io.IOException
 class JavaCodeGenerator{
 
 	private static val String targetSourceDir="/home/thijs/work/sytematic/RESTWorkspace/generation-test/src/";
+	private static var String serviceName="projectX";
 	private static val String targetPackageName="nl.sytematic.lib.projectX";
 	
 	
 	def generateCode(Resource restResource, Resource domainResource) {
-		val jcg = new JavaPojoGenerator();
+		val jpg = new JavaPojoGenerator();
 		val jmg = new JavaMainGenerator();
-		jcg.generateCode(restResource, domainResource);
-		jmg.generateCode(restResource, domainResource);
-	}	
+		jpg.generateCode(this, restResource, domainResource);
+		jmg.generateCode(this, restResource, domainResource);
+	}
 	
 	
-	def public static getTargetPackageName(){
+	def public getTargetPackageName(){
 		targetPackageName;
+	}
+	
+	def public getServiceName(){
+		serviceName;
 	}
 	
 	def static packageToDirectory(String packageName){

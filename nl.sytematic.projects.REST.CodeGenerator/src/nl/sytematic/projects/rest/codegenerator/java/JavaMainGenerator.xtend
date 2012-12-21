@@ -6,12 +6,14 @@ import org.eclipse.emf.ecore.resource.Resource
 
 class JavaMainGenerator {
 	
-	private val packageName = JavaCodeGenerator::targetPackageName;
-	private val mainName = "Main"; //TODO: get from a model
+	private var String packageName;
+	private var String mainName;
 
 
-	def generateCode(Resource resource, Resource resource2) {
-		JavaCodeGenerator::createJavaSourceFile(packageName, '''Main.java''', generateClassCode());			
+	def generateCode(JavaCodeGenerator jcg, Resource resource, Resource resource2) {
+		packageName = jcg.getTargetPackageName();
+		mainName = jcg.serviceName;
+		JavaCodeGenerator::createJavaSourceFile(packageName, '''«mainName».java''', generateClassCode());			
 	}
 	
 	def String generateClassCode(){
