@@ -10,13 +10,21 @@ class JavaMainGenerator {
 	private var String mainName;
 
 
-	def generateCode(JavaCodeGenerator jcg, Resource resource, Resource resource2) {
+	def generateCode(JavaCodeGenerator jcg, Resource restModel, Resource pojoModel) {
 		packageName = jcg.getTargetPackageName();
 		mainName = jcg.serviceName;
 		JavaCodeGenerator::createJavaSourceFile(packageName, '''«mainName».java''', generateClassCode());			
 	}
 	
+
+	def void test(Resource testModel){
+		
+	}
+	
+	
+	
 	def String generateClassCode(){
+	
 		'''
 		package «packageName»;
 		

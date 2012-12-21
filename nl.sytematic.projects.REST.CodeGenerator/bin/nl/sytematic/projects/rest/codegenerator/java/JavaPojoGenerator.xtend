@@ -15,9 +15,9 @@ class JavaPojoGenerator {
 	Map<String, Pojo> pojos=new HashMap<String, Pojo>();
 	
 
-	def generateCode(JavaCodeGenerator jcg, Resource resource, Resource resource2) {
+	def generateCode(JavaCodeGenerator jcg, Resource restModel, Resource pojoModel) {
 		val packageName = jcg.getTargetPackageName() +".data";
-		mapPojos(resource2);
+		mapPojos(pojoModel);
 		for(entry: pojos.entrySet){
 			entry.value.packageName=packageName;
 			JavaCodeGenerator::createJavaSourceFile(packageName, '''«entry.key».java''', generatePojoCode(entry.value));			
